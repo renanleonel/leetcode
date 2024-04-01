@@ -2,20 +2,21 @@ nums = [1,1,1,2,2,3]
 k = 2
 
 def topK(nums, k):
-    hashmap = {}
     ans = []
+    hashmap = {}
+    frequency = [[] for i in range(len(nums) + 1)]
     
-    for i, num in enumerate(nums):
-        hashmap[nums[i]] = 1 + hashmap.get(nums[i], 0)
+    for num in nums:
+        hashmap[num] = 1 + hashmap.get(num, 0)
     
-    i = 0
+    for num, occurency in hashmap.items():
+        frequency[occurency].append(num)
 
-    sortedMap = sorted(hashmap, key=hashmap.get, reverse=True)
+    for j in range (len(nums), 0, -1):
+        for num in frequency[j]:
+            ans.append(num)
 
-    while i < k:
-        ans.insert(i, sortedMap.pop(0))
-        i+=1
-
-    return ans
+            if len(ans) == k:
+                return ans
 
 print(topK(nums, k))
