@@ -13,10 +13,4 @@ def arithmeticTriplets(nums, diff):
     
     return ans
 
-
-
-
-                
-
-
 print(arithmeticTriplets(nums, diff))
