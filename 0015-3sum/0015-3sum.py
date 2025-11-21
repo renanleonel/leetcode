@@ -1,21 +1,23 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        sortedNums = sorted(nums)
+        nums.sort()
         ans = []
-        visited = {}
-        for i, n in enumerate(sortedNums):
-            l, r = i + 1, len(sortedNums) - 1
-            while l < r:
-                if sortedNums[i] + sortedNums[l] + sortedNums[r] == 0:
-                    possibleTriplet = [sortedNums[i], sortedNums[l], sortedNums[r]]
-                    if tuple(possibleTriplet) not in visited:
-                        ans.append(possibleTriplet)
-                        visited[tuple(possibleTriplet)] = True
-                    l += 1
-                    r -= 1
-                elif sortedNums[i] + sortedNums[l] + sortedNums[r] < 0:
-                    l += 1
-                else:
-                    r -= 1
 
+        for index, left in enumerate(nums):
+            if index > 0 and left == nums[index-1]:
+                continue
+
+            middle, right = index+1, len(nums)-1
+
+            while middle < right:
+                total = left + nums[middle] + nums[right]
+                if total < 0:
+                    middle+=1
+                elif total > 0:
+                    right-=1
+                else:
+                    ans.append([left, nums[middle], nums[right]])
+                    middle+=1
+                    while nums[middle] == nums[middle-1] and middle < right:
+                        middle+=1
         return ans
