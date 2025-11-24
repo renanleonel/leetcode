@@ -6,14 +6,11 @@ class Solution:
         for num in numsSet:
             count = 0
             if num - 1 not in numsSet:
-                i = num
-                while i in numsSet:
+                n = num
+                while n in numsSet:
                     count += 1
-                    i += 1
+                    n += 1
 
-                if count >= ans:
-                    ans = count
+                ans = max(ans, count)
 
         return ans
-
-        
