@@ -4,16 +4,9 @@ class Solution:
         ans = [0] * len(temperatures)
 
         for i, t in enumerate(temperatures):
-            if i == 0:
-                stack.append((i, t))
-            else:
-                if temperatures[i] <= temperatures[i - 1]:
-                    stack.append((i, t))
-                else:
-                    while stack and stack[-1][1] < temperatures[i]:
-                        days = i - stack[-1][0]
-                        ans[stack[-1][0]] = days
-                        stack.pop()
+            while stack and t > stack[-1][0]:
+                stackT, stackI = stack.pop()
+                ans[stackI] = i - stackI
+            stack.append([t, i])
 
-                    stack.append((i, t))
         return ans
