@@ -3,27 +3,22 @@ class Solution:
         stack = []
 
         for token in tokens:
-            if token == '+' or token == '-' or token == '*' or token == '/':
-                if token == '+':
-                    a = int(stack.pop())
-                    b = int(stack.pop())
-                    c = b + a
-                    stack.append(c)
-                elif token == '-':
-                    a = int(stack.pop())
-                    b = int(stack.pop())
-                    c = b - a
-                    stack.append(c)
-                elif token == '*':
-                    a = int(stack.pop())
-                    b = int(stack.pop())
-                    c = b * a 
-                    stack.append(c)
-                elif token == '/':
-                    a = int(stack.pop())
-                    b = int(stack.pop())
-                    c = b / a
-                    stack.append(c)
+            if token == '+':
+                a, b = int(stack.pop()), int(stack.pop())
+                c = b + a
+                stack.append(c)
+            elif token == '-':
+                a, b = int(stack.pop()), int(stack.pop())
+                c = b - a
+                stack.append(c)
+            elif token == '*':
+                a, b = int(stack.pop()), int(stack.pop())
+                c = b * a 
+                stack.append(c)
+            elif token == '/':
+                a, b = int(stack.pop()), int(stack.pop())
+                c = b / a
+                stack.append(c)
             else:
                 stack.append(token)
 
