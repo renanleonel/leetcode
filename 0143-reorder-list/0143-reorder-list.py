@@ -11,19 +11,22 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
 
-        second = slow.next
+        l2 = slow.next
         slow.next = None
         prev = None
 
-        while second:
-            temp = second.next
-            second.next = prev
-            prev = second
-            second = temp
+        while l2:
+            temp = l2.next
+            l2.next = prev
+            prev = l2
+            l2 = temp
 
-        first, second = head, prev
-        while second:
-            tempFirst, tempSecond = first.next, second.next
-            first.next = second
-            second.next = tempFirst
-            first, second = tempFirst, tempSecond
+        l1, l2 = head, prev
+
+        while l2:
+            tempL1, tempL2 = l1.next, l2.next
+
+            l1.next = l2
+            l2.next = tempL1
+
+            l1, l2 = tempL1, tempL2
