@@ -4,18 +4,22 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    def reverseLL(self, head):
         prev, curr = None, head
 
         while curr:
-            temp = curr.next
+            nxt = curr.next
             curr.next = prev
             prev = curr
-            curr = temp
+            curr = nxt
+        
+        return prev
+
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        head = self.reverseLL(head)
 
         i = 1
-        head, curr = prev, prev
-        prev = None
+        prev, curr = None, head
 
         while curr:
             if i == n:
@@ -30,12 +34,5 @@ class Solution:
                 prev = curr
                 curr = curr.next
 
-        prev, curr = None, head
-
-        while curr:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-
-        return prev
+        head = self.reverseLL(head)
+        return head
