@@ -7,4 +7,3 @@ class Solution:
             hashmap[num] = True
         
         return False
-        
