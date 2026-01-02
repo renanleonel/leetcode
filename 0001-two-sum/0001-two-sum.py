@@ -9,6 +9,3 @@ class Solution:
                 return [index, hashmap[diff]]
             
             hashmap[num] = index
-        
-
-            
