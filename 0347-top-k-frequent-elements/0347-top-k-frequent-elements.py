@@ -5,7 +5,7 @@ class Solution:
         frequency = [[] for i in range(len(nums) + 1)]
 
         for num in nums:
-            hashmap[num] = hashmap.get(num, 0) + 1
+            hashmap[num] = 1 + hashmap.get(num, 0)
 
         for number, occurence in hashmap.items():
             frequency[occurence].append(number)
