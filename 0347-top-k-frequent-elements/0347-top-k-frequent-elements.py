@@ -2,17 +2,19 @@ class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         ans = []
         hashmap = {}
-        frequency = [[] for i in range(len(nums) + 1)]
+        freq = [[] for i in range(len(nums) + 1)]
 
-        for num in nums:
-            hashmap[num] = hashmap.get(num, 0) + 1
+        for n in nums:
+            hashmap[n] = 1 + hashmap.get(n, 0)
 
-        for number, occurence in hashmap.items():
-            frequency[occurence].append(number)
+        for key,v in hashmap.items():
+            freq[v].append(key)
 
-        for i in range(len(frequency) - 1, 0, -1):
-            for n in frequency[i]:
-                ans.append(n)
-
+        for i in range(len(freq) -1, -1, -1):
+            for j in freq[i]:
                 if len(ans) == k:
                     return ans
+
+                ans.append(j)
+
+        return ans
