@@ -9,8 +9,6 @@ class Solution:
 
             if prices[l] > prices[r]:
                 l = r
-                r += 1
-            else:
-                r += 1
+            r += 1
 
         return _max
