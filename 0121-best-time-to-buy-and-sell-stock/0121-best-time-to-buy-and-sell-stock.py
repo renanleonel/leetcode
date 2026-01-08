@@ -4,11 +4,13 @@ class Solution:
         _max = 0
 
         while r < len(prices):
-            diff = prices[r] - prices[l]
-            _max = max(_max, diff)
+            profit = prices[r] - prices[l]
+            _max = max(_max, profit)
 
-            if prices[r] < prices[l]:
+            if prices[l] > prices[r]:
                 l = r
-            r += 1
+                r += 1
+            else:
+                r += 1
 
         return _max
