@@ -1,8 +1,8 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        hashmap = {}
         l, r = 0, 0
         total = 0
+        hashmap = {}
 
         while r < len(s):
             hashmap[s[r]] = 1 + hashmap.get(s[r], 0)
