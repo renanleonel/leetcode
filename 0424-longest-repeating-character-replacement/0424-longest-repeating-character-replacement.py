@@ -1,16 +1,17 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         hashmap = {}
-        longest = 0
-        l = 0
+        l, r = 0, 0
+        total = 0
 
-        for r in range(len(s)):
+        while r < len(s):
             hashmap[s[r]] = 1 + hashmap.get(s[r], 0)
 
             if r - l + 1 - max(hashmap.values()) > k:
                 hashmap[s[l]] -= 1
                 l += 1
 
-            longest = max(longest,  r - l + 1)
+            total = max(total, r - l + 1)
+            r += 1
 
-        return longest
+        return total
