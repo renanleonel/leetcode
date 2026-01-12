@@ -18,7 +18,6 @@ class Solution:
             self.res = max(self.res, left + right)
 
             return 1 + max(left, right)
-
-        dfs(root)
         
+        dfs(root)
         return self.res
