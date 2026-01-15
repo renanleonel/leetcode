@@ -15,9 +15,10 @@ class Solution:
             left = dfs(curr.left)
             right = dfs(curr.right)
 
+            diameter = 1 + max(left, right)
             self.res = max(self.res, left + right)
 
-            return 1 + max(left, right)
-        
+            return diameter
+
         dfs(root)
         return self.res
