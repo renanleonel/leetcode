@@ -5,7 +5,7 @@
 #         self.next = next
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        slow, fast = head, head
+        slow, fast = head, head.next
 
         while fast and fast.next:
             slow = slow.next
@@ -13,20 +13,20 @@ class Solution:
 
         l2 = slow.next
         slow.next = None
-        prev = None
 
+        prev = None
         while l2:
             temp = l2.next
             l2.next = prev
             prev = l2
             l2 = temp
-
+        
         l1, l2 = head, prev
 
         while l2:
-            tempL1, tempL2 = l1.next, l2.next
+            temp1, temp2 = l1.next, l2.next
 
             l1.next = l2
-            l2.next = tempL1
+            l2.next = temp1
 
-            l1, l2 = tempL1, tempL2
+            l1, l2 = temp1, temp2
